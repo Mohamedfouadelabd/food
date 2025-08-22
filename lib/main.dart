@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:food_app/Auth/login/login_screen.dart';
+import 'package:food_app/HomeScreen/Random/more_detils_random.dart';
 import 'package:food_app/MainScreen/main_screen.dart';
 import 'package:food_app/Theme/my_Theme.dart';
 import 'package:food_app/splach_screen.dart';
 
 import 'Auth/Register/register_screen.dart';
+import 'HomeScreen/Category/category_more_detils.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,12 +28,14 @@ class MyApp extends StatelessWidget {
           return MaterialApp(
             theme: MyTheme.primaryTheme,
             debugShowCheckedModeBanner: false,
-            initialRoute: SplachScreen.routeName,
+            initialRoute: MainScreen.routeName,
             routes: {
               SplachScreen.routeName: (context) => SplachScreen(),
               RegisterScreen.routeName: (context) => RegisterScreen(),
               LoginScreen.routeName: (context) => LoginScreen(),
               MainScreen.routeName: (context) => MainScreen(),
+           MoreDetilsRandom.routeName: (context) =>     MoreDetilsRandom(),
+              CategoryMoreDetils.routeName:(context) => CategoryMoreDetils(),
             },
           );
         });
