@@ -8,11 +8,11 @@ class FoodCategoryDetilsSourceResponse {
     if (json['meals'] != null) {
       meals = [];
       json['meals'].forEach((v) {
-        meals?.add(Meals.fromJson(v));
+        meals?.add(Source.fromJson(v));
       });
     }
   }
-  List<Meals>? meals;
+  List<Source>? meals;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -28,13 +28,13 @@ class FoodCategoryDetilsSourceResponse {
 /// strMealThumb : "https://www.themealdb.com/images/media/meals/sypxpx1515365095.jpg"
 /// idMeal : "52940"
 
-class Meals {
-  Meals({
+class Source {
+  Source({
       this.strMeal, 
       this.strMealThumb, 
       this.idMeal,});
 
-  Meals.fromJson(dynamic json) {
+  Source.fromJson(dynamic json) {
     strMeal = json['strMeal'];
     strMealThumb = json['strMealThumb'];
     idMeal = json['idMeal'];

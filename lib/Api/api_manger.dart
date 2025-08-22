@@ -63,7 +63,9 @@ https://www.themealdb.com/api/json/v1/1/random.php
 
     if (connectivityResult == ConnectivityResult.mobile ||
         connectivityResult == ConnectivityResult.wifi) {
-      Uri url = Uri.https(ApiConst.baseUrl, ApiConst.foodCategory);
+      Uri url = Uri.https(ApiConst.baseUrl, ApiConst.foodCategory,{
+        'c': 'list'
+      });
       /*
     https://www.themealdb.com/api/json/v1/1/list.php?c=list
      */
@@ -86,18 +88,27 @@ https://www.themealdb.com/api/json/v1/1/random.php
       Uri url = Uri.https(ApiConst.baseUrl, ApiConst.foodByCategory, {
         'i': ingredient,
       });
-      /*
-https://www.themealdb.com/api/json/v1/1/filter.php?i=chicken
-  */
-      var response = await http.get(url);
-      var bodyString = response.body;
-      var json = jsonDecode(bodyString);
-      return FoodCategoryDetilsSourceResponse.fromJson(json);
+
+      try {
+        var response = await http.get(url);
+        print('API Response: ${response.body}'); // عشان تتأكد إيه اللي رجع
+        if (response.statusCode == 200) {
+          var json = jsonDecode(response.body);
+          return FoodCategoryDetilsSourceResponse.fromJson(json);
+        } else {
+          print('HTTP error: ${response.statusCode}');
+          return null;
+        }
+      } catch (e) {
+        print('Error decoding JSON: $e');
+        return null;
+      }
     } else {
       print('No internet connection');
       return null;
     }
   }
+
 
   Future<CountrySourceResponse?> getCountry() async {
     /*
@@ -107,7 +118,10 @@ https://www.themealdb.com/api/json/v1/1/filter.php?i=chicken
 
     if (connectivityResult == ConnectivityResult.mobile ||
         connectivityResult == ConnectivityResult.wifi) {
-      Uri url = Uri.https(ApiConst.baseUrl, ApiConst.Country);
+      Uri url = Uri.https(ApiConst.baseUrl, ApiConst.country,{
+
+        'a':'list'
+      });
       var response = await http.get(url);
       var bodyString = response.body;
       var json = jsonDecode(bodyString);

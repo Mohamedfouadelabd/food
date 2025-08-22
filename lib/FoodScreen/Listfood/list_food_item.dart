@@ -2,10 +2,12 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/Theme/my_Theme.dart';
 
-class ListFoodItem extends StatelessWidget {
+import '../../model/FoodCategorySourceResponse.dart';
 
+class ListFoodItem extends StatelessWidget {
+  Meals meals ;
 bool isSelected;
-ListFoodItem({required this.isSelected});
+ListFoodItem({required this.isSelected,required this.meals});
 @override
   Widget build(BuildContext context) {
     return Container(
@@ -21,7 +23,7 @@ ListFoodItem({required this.isSelected});
 
      ),
 
-      child: Text('TexT',
+      child: Text(meals.strCategory??'',
       style: TextStyle(
         color: isSelected?MyTheme.white:MyTheme.primary,
       fontSize: 20,
