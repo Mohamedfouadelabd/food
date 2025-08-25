@@ -8,11 +8,11 @@ class CountrySourceResponse {
     if (json['meals'] != null) {
       meals = [];
       json['meals'].forEach((v) {
-        meals?.add(Meals.fromJson(v));
+        meals?.add(Area.fromJson(v));
       });
     }
   }
-  List<Meals>? meals;
+  List<Area>? meals;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -26,11 +26,11 @@ class CountrySourceResponse {
 
 /// strArea : "American"
 
-class Meals {
-  Meals({
+class Area {
+  Area({
       this.strArea,});
 
-  Meals.fromJson(dynamic json) {
+  Area.fromJson(dynamic json) {
     strArea = json['strArea'];
   }
   String? strArea;

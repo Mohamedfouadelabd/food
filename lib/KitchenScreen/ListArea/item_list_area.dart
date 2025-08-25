@@ -2,11 +2,12 @@
 import 'package:flutter/material.dart';
 
 import '../../Theme/my_Theme.dart';
+import '../../model/CountrySourceResponse.dart';
 
 class ItemListArea extends StatelessWidget {
-
+  Area area;
   bool isSelected;
-  ItemListArea({required this.isSelected});
+  ItemListArea({required this.isSelected,required this.area});
   @override
   Widget build(BuildContext context) {
     return  Container(
@@ -22,7 +23,7 @@ class ItemListArea extends StatelessWidget {
 
       ),
 
-      child: Text('TexT',
+      child: Text(area.strArea??"",
         style: TextStyle(
             color: isSelected?MyTheme.white:MyTheme.primary,
             fontSize: 20,

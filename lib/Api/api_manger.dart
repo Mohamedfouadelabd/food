@@ -91,7 +91,7 @@ https://www.themealdb.com/api/json/v1/1/random.php
 
       try {
         var response = await http.get(url);
-        print('API Response: ${response.body}'); // عشان تتأكد إيه اللي رجع
+
         if (response.statusCode == 200) {
           var json = jsonDecode(response.body);
           return FoodCategoryDetilsSourceResponse.fromJson(json);
