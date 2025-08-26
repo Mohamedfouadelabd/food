@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
-class SearchTap extends SearchDelegate{
+import '../Theme/my_Theme.dart';
+import 'Cubit/search_view.dart';
+
+class SearchTap extends SearchDelegate {
   @override
   List<Widget>? buildActions(BuildContext context) {
     return [
@@ -25,14 +28,21 @@ class SearchTap extends SearchDelegate{
 
   @override
   Widget buildResults(BuildContext context) {
-    return Container();
+    return buildSuggestions(context);
   }
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    return Container();
+    if (query.isEmpty) {
+      return Container(
+        color: MyTheme.white,
+        child: Center(child: Text('What meal do you want to search for?')),
+      );
+    }
+    return Column(
+      children: [
+        Expanded(child: SearchView(Mealname: query)),
+      ],
+    );
   }
-
-
-
 }

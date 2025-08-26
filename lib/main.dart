@@ -10,6 +10,7 @@ import 'package:food_app/splach_screen.dart';
 
 import 'Auth/Register/register_screen.dart';
 import 'HomeScreen/Category/category_more_detils.dart';
+import 'SearchTap/search_tap_detils.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             initialRoute: MainScreen.routeName,
             routes: {
+              SearchTapDetils.routeName: (context) => SearchTapDetils(),
               SplachScreen.routeName: (context) => SplachScreen(),
               RegisterScreen.routeName: (context) => RegisterScreen(),
               LoginScreen.routeName: (context) => LoginScreen(),
