@@ -28,7 +28,7 @@ class LoginScreenViewModel extends Cubit<LoginState> {
         );
 
         MyUser? myUser =
-        await FireBseUtils.getApiInstance().readUser(credential.user!.uid);
+        await FireBseUtils.getFirebaseInstance().readUser(credential.user!.uid);
 
         if (myUser != null) {
           emit(LoginSuccessState(myUser: myUser));

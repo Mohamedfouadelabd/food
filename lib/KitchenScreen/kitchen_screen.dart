@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'Food/food_detils_item.dart';
+import 'ListArea/Cubit/list_area_view.dart';
 import 'ListArea/list_area_tap_bar.dart';
 
 class KitchenScreen extends StatelessWidget {
@@ -11,18 +12,11 @@ class KitchenScreen extends StatelessWidget {
         SizedBox(
           height: MediaQuery.of(context).size.height * 0.02,
         ),
-        ListAreaTapBar(),
+        ListAreaView(),
         SizedBox(
           height: MediaQuery.of(context).size.height * 0.02,
         ),
-        Expanded(
-          child: ListView.builder(
-            itemCount: 100,
-            itemBuilder: (context, index) {
-              return FoodDetilsItem();
-            },
-          ),
-        )
+
       ],
     );
   }

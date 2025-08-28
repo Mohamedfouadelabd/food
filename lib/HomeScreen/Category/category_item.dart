@@ -2,9 +2,13 @@
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'package:food_app/Firebase/Model/My_Meal.dart';
 import 'package:food_app/HomeScreen/Category/category_more_detils.dart';
 import 'package:food_app/Theme/my_Theme.dart';
 
+import '../../FavoriteScreen/Add/Cubit/add_view_model.dart';
 import '../../model/AllCategorySourceResponse.dart';
 
 class CategoryItem extends StatelessWidget {
@@ -26,8 +30,8 @@ class CategoryItem extends StatelessWidget {
         decoration: BoxDecoration(
 borderRadius: BorderRadius.circular(5),
           border: Border.all(
-  width: 3,
-  color: MyTheme.primary
+  width: 2,
+  color: MyTheme.black
 ),
         ),
         child:Column(
@@ -67,14 +71,27 @@ borderRadius: BorderRadius.circular(5),
                         .copyWith(color: MyTheme.black),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                      right: 5
+                InkWell(
+                 onTap: (){
+
+                   MyMeal myMeal = MyMeal(
+                     id: categories.idCategory ,
+                     title: categories.strCategory,
+                     images: categories.strCategoryThumb,
+                   );
+
+
+                   context.read<AddViewModel>().addMeal(myMeal);
+                 },
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                        right: 5
+                    ),
+                    child: Image.asset('assets/images/img_3.png',
+                      height: MediaQuery.of(context).size.height*0.03,
+                    ),
                   ),
-                  child: Image.asset('assets/images/img_3.png',
-                    height: MediaQuery.of(context).size.height*0.03,
-                  ),
-                )
+                ),
               ],
             ),
           ],

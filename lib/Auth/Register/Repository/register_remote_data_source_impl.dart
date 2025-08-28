@@ -17,7 +17,7 @@ class RegisterRemoteDataSourceImpl implements RegisterRemoteDataSource{
 }
 
 RegisterRemoteDataSource injectRegisterRemoteDataSource(){
- return RegisterRemoteDataSourceImpl(fireBseUtils: FireBseUtils.getApiInstance());
+ return RegisterRemoteDataSourceImpl(fireBseUtils: FireBseUtils.getFirebaseInstance());
 
 
 }

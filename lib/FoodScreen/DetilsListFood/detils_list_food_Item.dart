@@ -17,8 +17,8 @@ class DetilsListFoodItem extends StatelessWidget {
       height: MediaQuery.of(context).size.height * 0.4,
       decoration: BoxDecoration(
          border: Border.all(
-            color: MyTheme.primary,
-                width: 3,
+            color: MyTheme.black,
+                width: 2,
          ),
            borderRadius: BorderRadius.circular(10)),
 

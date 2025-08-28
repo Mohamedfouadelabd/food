@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:food_app/Api/api_const.dart';
 import 'package:food_app/model/RandomSourceResponse.dart';
+import 'package:food_app/model/SearchSourceResponse.dart';
 import 'package:http/http.dart' as http;
 
 import '../model/AllCategorySourceResponse.dart';
@@ -91,7 +92,7 @@ https://www.themealdb.com/api/json/v1/1/random.php
 
       try {
         var response = await http.get(url);
-        print('API Response: ${response.body}'); // عشان تتأكد إيه اللي رجع
+
         if (response.statusCode == 200) {
           var json = jsonDecode(response.body);
           return FoodCategoryDetilsSourceResponse.fromJson(json);
@@ -153,4 +154,41 @@ https://www.themealdb.com/api/json/v1/1/filter.php?a=American
       return null;
     }
   }
+
+  Future<SearchSourceResponse?> getSearch(String mealName)async{
+    final connectivityResult = await Connectivity().checkConnectivity();
+
+    if (connectivityResult == ConnectivityResult.mobile ||
+        connectivityResult == ConnectivityResult.wifi) {
+      Uri url=Uri.https(ApiConst.baseUrl,ApiConst.search,{
+
+        's':mealName,
+      });
+      /*
+
+   https://www.themealdb.com/api/json/v1/1/search.php?s=pizza
+    */
+
+
+      var response= await http.get(url);
+      var bodyString=response.body;
+      var json=jsonDecode(bodyString);
+      return SearchSourceResponse.fromJson(json);
+
+    }else {
+      print('No internet connection');
+      return null;
+    }
+
+
+
+
+
+
+
+
+
+
+}
+
 }
