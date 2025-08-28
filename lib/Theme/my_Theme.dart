@@ -9,6 +9,9 @@ class MyTheme{
 static ThemeData primaryTheme=ThemeData(
 
   appBarTheme: AppBarTheme(
+    iconTheme: IconThemeData(
+      color: Colors.black,
+    ),
     backgroundColor: Colors.transparent,
         elevation: 0,
  titleTextStyle:TextStyle(
