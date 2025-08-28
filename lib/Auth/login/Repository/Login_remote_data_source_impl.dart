@@ -16,7 +16,7 @@ var response=  fireBseUtils.readUser(uId);
 
 
 LoginRemoteDataSource injectLoginRemoteDataSource(){
-  return LoginRemoteDataSourceImpl(fireBseUtils: FireBseUtils.getApiInstance());
+  return LoginRemoteDataSourceImpl(fireBseUtils: FireBseUtils.getFirebaseInstance());
 
 
 }
