@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
           child: MaterialApp(
             theme: MyTheme.primaryTheme,
             debugShowCheckedModeBanner: false,
-            initialRoute: MainScreen.routeName,
+            initialRoute: SplachScreen.routeName,
             routes: {
               SearchTapDetils.routeName: (context) => SearchTapDetils(),
               SplachScreen.routeName: (context) => SplachScreen(),
